@@ -26,11 +26,11 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Goal Settings</h2>
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Настройки цели</h2>
       
       <div className="mb-4">
         <label className="block text-gray-700 dark:text-gray-300 mb-2" htmlFor="goalTitle">
-          Наименование цели
+          Название цели
         </label>
         <input
           id="goalTitle"
@@ -69,7 +69,7 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
       
       <div className="mb-4">
         <label className="block text-gray-700 dark:text-gray-300 mb-2" htmlFor="goalImage">
-          Картинка цели
+          Изображение цели
         </label>
         <input
           id="goalImage"
@@ -81,9 +81,9 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
         
         {imagePreview && (
           <div className="mt-4">
-            <img 
-              src={imagePreview} 
-              alt="Preview" 
+            <img
+              src={imagePreview}
+              alt="Preview"
               className="w-32 h-32 object-cover rounded-md border border-gray-300 dark:border-gray-600"
             />
           </div>
@@ -96,7 +96,7 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
           onClick={onSave}
           className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          Save Goal Settings
+          Сохранить настройки цели
         </button>
         
         <button
@@ -104,7 +104,7 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
           onClick={onResetProgress}
           className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
         >
-          Reset Progress
+          Сбросить прогресс
         </button>
       </div>
     </div>

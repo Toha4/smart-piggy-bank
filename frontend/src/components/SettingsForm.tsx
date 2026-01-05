@@ -10,11 +10,11 @@ interface SettingsFormProps {
 const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Appearance Settings</h2>
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Настройки внешнего вида</h2>
       
       <div className="mb-4">
         <label className="block text-gray-700 dark:text-gray-300 mb-2">
-          Theme
+          Тема
         </label>
         <div className="flex space-x-4">
           <label className="inline-flex items-center">
@@ -24,7 +24,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave 
               onChange={() => onChange({ theme: 'light' })}
               className="form-radio text-blue-600"
             />
-            <span className="ml-2 dark:text-gray-300">Light</span>
+            <span className="ml-2 dark:text-gray-300">Светлая</span>
           </label>
           <label className="inline-flex items-center">
             <input
@@ -33,7 +33,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave 
               onChange={() => onChange({ theme: 'dark' })}
               className="form-radio text-blue-600"
             />
-            <span className="ml-2 dark:text-gray-300">Dark</span>
+            <span className="ml-2 dark:text-gray-300">Темная</span>
           </label>
         </div>
       </div>
@@ -44,7 +44,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave 
           onClick={onSave}
           className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          Save Settings
+          Сохранить настройки
         </button>
       </div>
     </div>

@@ -155,14 +155,7 @@ const SettingsPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-6">
-        <Link to="/" className="text-blue-500 hover:underline">
-          &larr; Back to Goals
-        </Link>
-      </div>
-
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Settings</h1>
         
         {settings && (
           <SettingsForm
@@ -188,12 +181,12 @@ const SettingsPage: React.FC = () => {
         )}
         
         <div className="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">App Information</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Информация о приложении</h2>
           <p className="text-gray-600 dark:text-gray-400">
             Smart Piggy Bank v1.0.0
           </p>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Manage your savings goals effectively with our intuitive application.
+            Эффективно управляйте своими целями накопления с помощью нашего интуитивного приложения.
           </p>
         </div>
       </div>
