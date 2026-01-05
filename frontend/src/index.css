@@ -9,8 +9,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f3f4f6;
+  background-image: url('./static/image/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
+/* Добавляем стили для полупрозрачного фона в контейнеры */
+header, main, footer {
+  background-color: rgb(17 19 24 / 85%);
+  backdrop-filter: blur(4px); /* размытие фона для эффекта стекла */
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

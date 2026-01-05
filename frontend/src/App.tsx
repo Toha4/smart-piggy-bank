@@ -9,7 +9,7 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <div className="flex flex-col min-h-screen text-gray-900 dark:text-gray-100">
         <header className="bg-white dark:bg-gray-800 shadow-sm">
           <div className="container mx-auto px-4 py-2 flex justify-between items-center">
             <div className="flex items-center space-x-3">
@@ -97,7 +97,7 @@ const App: React.FC = () => {
           </div>
         </header>
         
-        <main>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/goal/:id" element={<GoalDetailPage />} />
@@ -106,7 +106,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         
-        <footer className="bg-white dark:bg-gray-800 py-6 mt-8">
+        <footer className="bg-white dark:bg-gray-800 py-6">
           <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
             <p>© {new Date().getFullYear()} Smart Piggy Bank. All rights reserved.</p>
           </div>
