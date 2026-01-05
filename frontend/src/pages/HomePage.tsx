@@ -140,6 +140,7 @@ const HomePage: React.FC = () => {
             </div>
             <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-2 font-medium">
               <span>{progressPercentage.toFixed(1)}%</span>
+              <span>Осталось: {formatCurrency(currentGoal.target_amount - currentGoal.current_balance)} ₽</span>
               {currentGoal.target_date && (
                 <span>Дедлайн: {new Date(currentGoal.target_date).toLocaleDateString('ru-RU')}</span>
               )}
