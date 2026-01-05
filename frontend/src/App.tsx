@@ -4,8 +4,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import ThemeInitializer from './components/ThemeInitializer';
 import ThemeLoader from './components/ThemeLoader';
 import HomePage from './pages/HomePage';
-import GoalDetailPage from './pages/GoalDetailPage';
-import AddTransactionPage from './pages/AddTransactionPage';
+import TransactionPage from './pages/TransactionPage';
 import SettingsPage from './pages/SettingsPage';
 import HomeIcon from './components/icons/HomeIcon';
 import TransactionIcon from './components/icons/TransactionIcon';
@@ -76,7 +75,7 @@ const App: React.FC = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/add-transaction" className="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                      <Link to="/transactions" className="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
                         <TransactionIcon className="h-6 w-6 mr-2" />
                         Операции
                       </Link>
@@ -102,7 +101,7 @@ const App: React.FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/add-transaction" className="flex items-center py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link to="/transactions" className="flex items-center py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" onClick={() => setIsMobileMenuOpen(false)}>
                     <TransactionIcon className="h-6 w-6 mr-2" />
                     Операции
                   </Link>
@@ -120,8 +119,7 @@ const App: React.FC = () => {
             <main className="flex-grow">
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/goal/:id" element={<GoalDetailPage />} />
-                <Route path="/add-transaction" element={<AddTransactionPage />} />
+                <Route path="/transactions" element={<TransactionPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
               </Routes>
             </main>

@@ -40,7 +40,7 @@ def create_transaction(transaction_create: TransactionCreate, db: Session = Depe
     
     return db_transaction
 
-@router.put("/transactions/{transaction_id}", response_model=TransactionResponse)
+@router.put("/{transaction_id}", response_model=TransactionResponse)
 def update_transaction(
     transaction_id: int,
     transaction_update: TransactionUpdate,
@@ -73,7 +73,7 @@ def update_transaction(
     
     return db_transaction
 
-@router.delete("/transactions/{transaction_id}")
+@router.delete("/{transaction_id}")
 def delete_transaction(transaction_id: int, db: Session = Depends(get_db)):
     db_transaction = db.query(Transaction).filter(Transaction.id == transaction_id).first()
     if not db_transaction:

@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
         goal_id: currentGoal.id,
         amount: numericAmount,
         transaction_type: 'deposit' as const,
-        description: description || 'Пополнение копилки'
+        description: description || ''
       };
       
       await transactionService.createTransaction(transactionData);
