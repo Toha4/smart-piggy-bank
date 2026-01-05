@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files first
+COPY ./frontend/package*.json ./
+
+# Copy source code
+COPY ./frontend/ ./
+
+# Install dependencies to ensure correct platform binaries (like esbuild)
+RUN npm install
+
+# Build frontend with environment variables
+ARG VITE_API_BASE_URL=http://127.0.0.1:8000
+ENV VITE_API_BASE_URL=${VITE_API_BASE_URL}
+RUN npm run build
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

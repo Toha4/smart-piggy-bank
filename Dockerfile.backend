@@ -1,0 +1,16 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY ./backend/requirements.txt /app/requirements.txt
+
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+COPY ./backend /app
+
+EXPOSE 8000
+
+# Создаем скрипт для инициализации базы данных
+RUN echo '#!/bin/bash\npython -c "from database import engine; from models import Base; Base.metadata.create_all(bind=engine)"' > /init_db.sh && chmod +x /init_db.sh
+
+CMD ["sh", "-c", "/init_db.sh && uvicorn main:app --host 0.0.0 --port 800"]
