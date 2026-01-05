@@ -1,5 +1,6 @@
 import React from 'react';
 import { Settings } from '../types';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface SettingsFormProps {
   settings: Settings;
@@ -8,6 +9,13 @@ interface SettingsFormProps {
 }
 
 const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave }) => {
+  const { theme, setTheme } = useTheme();
+
+  const handleThemeChange = (newTheme: 'light' | 'dark') => {
+    onChange({ theme: newTheme });
+    setTheme(newTheme);
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-4">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Настройки внешнего вида</h2>
@@ -21,7 +29,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave 
             <input
               type="radio"
               checked={settings.theme === 'light'}
-              onChange={() => onChange({ theme: 'light' })}
+              onChange={() => handleThemeChange('light')}
               className="form-radio text-blue-600"
             />
             <span className="ml-2 dark:text-gray-300">Светлая</span>
@@ -30,14 +38,14 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ settings, onChange, onSave 
             <input
               type="radio"
               checked={settings.theme === 'dark'}
-              onChange={() => onChange({ theme: 'dark' })}
+              onChange={() => handleThemeChange('dark')}
               className="form-radio text-blue-600"
             />
             <span className="ml-2 dark:text-gray-300">Темная</span>
           </label>
         </div>
       </div>
-      
+       
       <div className="flex justify-end">
         <button
           type="button"

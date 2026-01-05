@@ -18,8 +18,13 @@ body {
 
 /* Добавляем стили для полупрозрачного фона в контейнеры */
 header, main, footer {
-  background-color: rgb(17 19 24 / 85%);
+  background-color: rgb(255 255 255 / 85%);
   backdrop-filter: blur(4px); /* размытие фона для эффекта стекла */
+}
+
+/* Для темного режима используем другой цвет фона */
+.dark header, .dark main, .dark footer {
+  background-color: rgb(17 19 24 / 85%);
 }
 
 

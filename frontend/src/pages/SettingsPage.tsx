@@ -66,9 +66,11 @@ const SettingsPage: React.FC = () => {
     fetchSettingsAndGoal();
   }, []);
 
+
   const handleSettingsChange = (updatedSettings: Partial<Settings>) => {
     if (settings) {
-      setSettings({ ...settings, ...updatedSettings });
+      const newSettings = { ...settings, ...updatedSettings };
+      setSettings(newSettings);
     }
   };
 

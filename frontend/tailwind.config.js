@@ -8,4 +8,5 @@ export default {
     extend: {},
   },
   plugins: [],
+  darkMode: 'class', // или 'media' если хотите использовать системные настройки по умолчанию
 }

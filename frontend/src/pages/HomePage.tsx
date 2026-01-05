@@ -118,7 +118,7 @@ const HomePage: React.FC = () => {
                 <img
                   src={currentGoal.image_url}
                   alt={currentGoal.title}
-                  className="w-80 h-80 object-cover rounded-lg border border-gray-200 dark:border-gray-700"
+                  className="w-80 h-80 object-cover rounded-lg dark:border-gray-700"
                 />
               </div>
             )}
