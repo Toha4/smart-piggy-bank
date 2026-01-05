@@ -23,7 +23,11 @@ const GoalDetailPage: React.FC = () => {
           const goalTransactions = allTransactions.filter(
             transaction => transaction.goal_id === parseInt(id, 10)
           );
-          setTransactions(goalTransactions);
+          // Сортируем транзакции по дате создания (новые сверху)
+          const sortedTransactions = goalTransactions.sort((a, b) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+          );
+          setTransactions(sortedTransactions);
         }
       } catch (error) {
         console.error('Error fetching goal data:', error);
@@ -162,7 +166,13 @@ const GoalDetailPage: React.FC = () => {
                       {transaction.transaction_type.charAt(0).toUpperCase() + transaction.transaction_type.slice(1)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                      {new Date(transaction.created_at).toLocaleDateString()}
+                      {new Date(transaction.created_at + 'Z').toLocaleString('ru-RU', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
                     </td>
                   </tr>
                 ))}

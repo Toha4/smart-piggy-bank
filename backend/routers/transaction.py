@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.get("/", response_model=list[TransactionResponse])
 def get_transactions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    transactions = db.query(Transaction).offset(skip).limit(limit).all()
+    transactions = db.query(Transaction).order_by(Transaction.created_at.desc()).offset(skip).limit(limit).all()
     return transactions
 
 @router.get("/{transaction_id}", response_model=TransactionResponse)
