@@ -130,20 +130,17 @@ const SettingsPage: React.FC = () => {
   const handleResetProgress = async () => {
     if (!goal) return;
     
-    if (window.confirm('Are you sure you want to reset the progress? This will set the balance to 0 and clear the transaction history.')) {
-      try {
-        // In a real app, we would have an API endpoint to reset progress
-        // For now, we'll just update the goal with 0 balance
-        const updatedGoal = await goalService.updateGoal(goal.id, { current_balance: 0 });
-        setGoal(updatedGoal);
-        
-        setSaveStatus('Progress reset successfully!');
-        setTimeout(() => setSaveStatus(null), 3000);
-      } catch (error) {
-        console.error('Error resetting progress:', error);
-        setSaveStatus('Error resetting progress. Please try again.');
-        setTimeout(() => setSaveStatus(null), 3000);
-      }
+    try {
+      // Вызываем API для сброса прогресса
+      const updatedGoal = await goalService.resetGoalProgress(goal.id);
+      setGoal(updatedGoal);
+      
+      setSaveStatus('Progress reset successfully!');
+      setTimeout(() => setSaveStatus(null), 3000);
+    } catch (error) {
+      console.error('Error resetting progress:', error);
+      setSaveStatus('Error resetting progress. Please try again.');
+      setTimeout(() => setSaveStatus(null), 3000);
     }
   };
 

@@ -1,15 +1,30 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useCallback } from 'react';
 import { Goal } from '../types';
+import ConfirmationModal from './ConfirmationModal';
 
 interface GoalSettingsFormProps {
   goal: Goal;
   onChange: (goal: Partial<Goal>) => void;
   onSave: () => void;
-  onResetProgress: () => void;
+  onResetProgress: (goalTitle: string) => Promise<void>;
 }
 
 const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onSave, onResetProgress }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(goal.image_url || null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleResetProgressClick = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const handleModalConfirm = useCallback(() => {
+    onResetProgress(goal.title);
+    setIsModalOpen(false);
+  }, [onResetProgress, goal.title]);
+
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -101,11 +116,21 @@ const GoalSettingsForm: React.FC<GoalSettingsFormProps> = ({ goal, onChange, onS
         
         <button
           type="button"
-          onClick={onResetProgress}
+          onClick={handleResetProgressClick}
           className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
         >
           Сбросить прогресс
         </button>
+
+        {isModalOpen && (
+          <ConfirmationModal
+            isOpen={isModalOpen}
+            onClose={handleModalClose}
+            onConfirm={handleModalConfirm}
+            goalTitle={goal.title}
+            message="Вы уверены, что хотите сбросить прогресс? Это действие установит баланс в 0 и удалит всю историю пополнений."
+          />
+        )}
       </div>
     </div>
   );

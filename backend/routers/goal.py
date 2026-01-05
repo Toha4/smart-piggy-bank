@@ -73,3 +73,20 @@ def delete_goal(goal_id: int, db: Session = Depends(get_db)):
     db.commit()
     
     return {"message": "Goal deleted successfully"}
+
+@router.post("/{goal_id}/reset-progress")
+def reset_goal_progress(goal_id: int, db: Session = Depends(get_db)):
+    # Получаем цель
+    db_goal = db.query(Goal).filter(Goal.id == goal_id).first()
+    if not db_goal:
+        raise HTTPException(status_code=404, detail="Goal not found")
+    
+    # Удаляем все транзакции, связанные с этой целью
+    db.query(Transaction).filter(Transaction.goal_id == goal_id).delete()
+    
+    # Сбрасываем текущий баланс до 0
+    db_goal.current_balance = 0
+    db.commit()
+    db.refresh(db_goal)
+    
+    return {"message": "Goal progress reset successfully", "goal": db_goal}

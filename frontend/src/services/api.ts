@@ -33,6 +33,11 @@ export const goalService = {
   deleteGoal: async (id: number): Promise<void> => {
     await api.delete(`/goals/${id}`);
   },
+
+  resetGoalProgress: async (id: number): Promise<Goal> => {
+    const response = await api.post(`/goals/${id}/reset-progress`);
+    return response.data.goal;
+  },
 };
 
 // Transaction services
