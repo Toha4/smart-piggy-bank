@@ -12,6 +12,7 @@ services:
     environment:
       - DATABASE_URL=sqlite:///./smart_piggy_bank.db
     command: sh -c "python -c 'from database import engine; from models import Base; Base.metadata.create_all(bind=engine)' && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    restart: always
   
   frontend:
     build:
@@ -30,6 +31,7 @@ services:
       - VITE_API_BASE_URL=http://127.0.0.1:8000
     # Для запуска в dev-режиме вне Docker
     # - VITE_API_BASE_URL=http://127.0.0.1:8000
+    restart: always
 
 volumes:
   db_data:
